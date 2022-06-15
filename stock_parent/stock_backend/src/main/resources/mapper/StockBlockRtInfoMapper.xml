@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.itheima.stock.mapper.StockBlockRtInfoMapper">
+<mapper namespace="com.it.stock.mapper.StockBlockRtInfoMapper">
 
-    <resultMap id="BaseResultMap" type="com.itheima.stock.pojo.StockBlockRtInfo">
+    <resultMap id="BaseResultMap" type="com.it.stock.pojo.StockBlockRtInfo">
         <id property="id" column="id" jdbcType="VARCHAR"/>
         <result property="label" column="label" jdbcType="VARCHAR"/>
         <result property="blockName" column="block_name" jdbcType="VARCHAR"/>
@@ -29,7 +29,7 @@
         from stock_block_rt_info
         where id = #{id,jdbcType=VARCHAR}
     </select>
-    <select id="getStockBlock" resultType="com.itheima.stock.common.domain.StockBlockDomain">
+    <select id="getStockBlock" resultType="com.it.stock.common.domain.StockBlockDomain">
         select sbr.company_num  companyNum,
                sbr.trade_amount tradeAmt,
                sbr.label        code,
@@ -43,7 +43,7 @@
         order by sbr.trade_volume desc
             limit #{num};
     </select>
-    <select id="findBlockInfoByTimeLimit" resultType="com.itheima.stock.common.domain.StockBlockDomain">
+    <select id="findBlockInfoByTimeLimit" resultType="com.it.stock.common.domain.StockBlockDomain">
         select sbr.company_num  companyNum,
                sbr.trade_amount tradeAmt,
                sbr.label        code,
@@ -61,7 +61,7 @@
         from stock_block_rt_info
         where id = #{id,jdbcType=VARCHAR}
     </delete>
-    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.itheima.stock.pojo.StockBlockRtInfo"
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.it.stock.pojo.StockBlockRtInfo"
             useGeneratedKeys="true">
         insert into stock_block_rt_info
         ( id, label, block_name
@@ -71,7 +71,7 @@
                , #{companyNum,jdbcType=INTEGER}, #{avgPrice,jdbcType=DECIMAL}, #{updownRate,jdbcType=DECIMAL}
                , #{tradeAmount,jdbcType=BIGINT}, #{tradeVolume,jdbcType=DECIMAL}, #{curTime,jdbcType=TIMESTAMP})
     </insert>
-    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.itheima.stock.pojo.StockBlockRtInfo"
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.it.stock.pojo.StockBlockRtInfo"
             useGeneratedKeys="true">
         insert into stock_block_rt_info
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -111,7 +111,7 @@
             #{info.curTime,jdbcType=TIMESTAMP})
         </foreach>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.itheima.stock.pojo.StockBlockRtInfo">
+    <update id="updateByPrimaryKeySelective" parameterType="com.it.stock.pojo.StockBlockRtInfo">
         update stock_block_rt_info
         <set>
             <if test="label != null">
@@ -141,7 +141,7 @@
         </set>
         where id = #{id,jdbcType=VARCHAR}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.itheima.stock.pojo.StockBlockRtInfo">
+    <update id="updateByPrimaryKey" parameterType="com.it.stock.pojo.StockBlockRtInfo">
         update stock_block_rt_info
         set label        = #{label,jdbcType=VARCHAR},
             block_name   = #{blockName,jdbcType=VARCHAR},

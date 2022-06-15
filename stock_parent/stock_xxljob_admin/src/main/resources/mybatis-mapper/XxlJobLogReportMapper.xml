@@ -3,7 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.itheima.job.admin.dao.XxlJobLogReportDao">
 	
-	<resultMap id="XxlJobLogReport" type="com.itheima.job.admin.core.model.XxlJobLogReport" >
+	<resultMap id="XxlJobLogReport" type="com.it.job.admin.core.model.XxlJobLogReport" >
 		<result column="id" property="id" />
 	    <result column="trigger_day" property="triggerDay" />
 		<result column="running_count" property="runningCount" />
@@ -19,7 +19,7 @@
 		t.fail_count
 	</sql>
 	
-	<insert id="save" parameterType="com.itheima.job.admin.core.model.XxlJobLogReport" useGeneratedKeys="true" keyProperty="id" >
+	<insert id="save" parameterType="com.it.job.admin.core.model.XxlJobLogReport" useGeneratedKeys="true" keyProperty="id" >
 		INSERT INTO xxl_job_log_report (
 			`trigger_day`,
 			`running_count`,

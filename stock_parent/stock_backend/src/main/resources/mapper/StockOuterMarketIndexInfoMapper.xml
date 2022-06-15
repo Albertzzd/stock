@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.itheima.stock.mapper.StockOuterMarketIndexInfoMapper">
+<mapper namespace="com.it.stock.mapper.StockOuterMarketIndexInfoMapper">
 
-    <resultMap id="BaseResultMap" type="com.itheima.stock.pojo.StockOuterMarketIndexInfo">
+    <resultMap id="BaseResultMap" type="com.it.stock.pojo.StockOuterMarketIndexInfo">
         <id property="id" column="id" jdbcType="VARCHAR"/>
         <result property="marketCode" column="market_code" jdbcType="CHAR"/>
         <result property="marketName" column="market_name" jdbcType="VARCHAR"/>
@@ -28,7 +28,7 @@
         where id = #{id,jdbcType=VARCHAR}
     </select>
     <!--    查询外盘指数信息-->
-    <select id="getMarketInfo" resultType="com.itheima.stock.common.domain.OuterMarketDomain">
+    <select id="getMarketInfo" resultType="com.it.stock.common.domain.OuterMarketDomain">
         select market_name as name,
         cur_point as curPoint,
         updown as upDown,
@@ -42,7 +42,7 @@
         and smi.cur_time = #{lastDate}
 
     </select>
-    <select id="getOuterMarket" resultType="com.itheima.stock.common.domain.OuterMarketDomain">
+    <select id="getOuterMarket" resultType="com.it.stock.common.domain.OuterMarketDomain">
         select som.market_name name, som.cur_point curPoint, som.updown updown, som.rose rose, som.cur_time curTime
         from stock_outer_market_index_info som
         where som.market_code in
@@ -57,7 +57,7 @@
         from stock_outer_market_index_info
         where id = #{id,jdbcType=VARCHAR}
     </delete>
-    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.itheima.stock.pojo.StockOuterMarketIndexInfo"
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.it.stock.pojo.StockOuterMarketIndexInfo"
             useGeneratedKeys="true">
         insert into stock_outer_market_index_info
         ( id, market_code, market_name
@@ -68,7 +68,7 @@
                , #{curTime,jdbcType=TIMESTAMP})
     </insert>
     <insert id="insertSelective" keyColumn="id" keyProperty="id"
-            parameterType="com.itheima.stock.pojo.StockOuterMarketIndexInfo" useGeneratedKeys="true">
+            parameterType="com.it.stock.pojo.StockOuterMarketIndexInfo" useGeneratedKeys="true">
         insert into stock_outer_market_index_info
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">id,</if>
@@ -102,7 +102,7 @@
                </foreach>
 
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.itheima.stock.pojo.StockOuterMarketIndexInfo">
+    <update id="updateByPrimaryKeySelective" parameterType="com.it.stock.pojo.StockOuterMarketIndexInfo">
         update stock_outer_market_index_info
         <set>
             <if test="marketCode != null">
@@ -126,7 +126,7 @@
         </set>
         where id = #{id,jdbcType=VARCHAR}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.itheima.stock.pojo.StockOuterMarketIndexInfo">
+    <update id="updateByPrimaryKey" parameterType="com.it.stock.pojo.StockOuterMarketIndexInfo">
         update stock_outer_market_index_info
         set market_code = #{marketCode,jdbcType=CHAR},
             market_name = #{marketName,jdbcType=VARCHAR},

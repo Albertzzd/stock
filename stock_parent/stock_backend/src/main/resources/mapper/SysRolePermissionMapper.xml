@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.itheima.stock.mapper.SysRolePermissionMapper">
+<mapper namespace="com.it.stock.mapper.SysRolePermissionMapper">
 
-    <resultMap id="BaseResultMap" type="com.itheima.stock.pojo.SysRolePermission">
+    <resultMap id="BaseResultMap" type="com.it.stock.pojo.SysRolePermission">
             <id property="id" column="id" jdbcType="VARCHAR"/>
             <result property="roleId" column="role_id" jdbcType="VARCHAR"/>
             <result property="permissionId" column="permission_id" jdbcType="VARCHAR"/>
@@ -27,14 +27,14 @@
         delete from sys_role_permission
         where  id = #{id,jdbcType=VARCHAR} 
     </delete>
-    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.itheima.stock.pojo.SysRolePermission" useGeneratedKeys="true">
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.it.stock.pojo.SysRolePermission" useGeneratedKeys="true">
         insert into sys_role_permission
         ( id,role_id,permission_id
         ,create_time)
         values (#{id,jdbcType=VARCHAR},#{roleId,jdbcType=VARCHAR},#{permissionId,jdbcType=VARCHAR}
         ,#{createTime,jdbcType=TIMESTAMP})
     </insert>
-    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.itheima.stock.pojo.SysRolePermission" useGeneratedKeys="true">
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.it.stock.pojo.SysRolePermission" useGeneratedKeys="true">
         insert into sys_role_permission
         <trim prefix="(" suffix=")" suffixOverrides=",">
                 <if test="id != null">id,</if>
@@ -49,7 +49,7 @@
                 <if test="createTime != null">#{createTime,jdbcType=TIMESTAMP},</if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.itheima.stock.pojo.SysRolePermission">
+    <update id="updateByPrimaryKeySelective" parameterType="com.it.stock.pojo.SysRolePermission">
         update sys_role_permission
         <set>
                 <if test="roleId != null">
@@ -64,7 +64,7 @@
         </set>
         where   id = #{id,jdbcType=VARCHAR} 
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.itheima.stock.pojo.SysRolePermission">
+    <update id="updateByPrimaryKey" parameterType="com.it.stock.pojo.SysRolePermission">
         update sys_role_permission
         set 
             role_id =  #{roleId,jdbcType=VARCHAR},

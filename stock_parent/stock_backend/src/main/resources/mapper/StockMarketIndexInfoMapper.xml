@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.itheima.stock.mapper.StockMarketIndexInfoMapper">
+<mapper namespace="com.it.stock.mapper.StockMarketIndexInfoMapper">
 
-    <resultMap id="BaseResultMap" type="com.itheima.stock.pojo.StockMarketIndexInfo">
+    <resultMap id="BaseResultMap" type="com.it.stock.pojo.StockMarketIndexInfo">
         <id property="id" column="id" jdbcType="VARCHAR"/>
         <result property="marketCode" column="market_code" jdbcType="CHAR"/>
         <result property="curTime" column="cur_time" jdbcType="TIMESTAMP"/>
@@ -32,7 +32,7 @@
         from stock_market_index_info
         where id = #{id,jdbcType=VARCHAR}
     </select>
-    <select id="getInnerMarketByDateAndInner" resultType="com.itheima.stock.common.domain.InnerMarketDomain">
+    <select id="getInnerMarketByDateAndInner" resultType="com.it.stock.common.domain.InnerMarketDomain">
         select
         smi.market_code code,
         smi.market_name name,
@@ -70,7 +70,7 @@
         from stock_market_index_info
         where id = #{id,jdbcType=VARCHAR}
     </delete>
-    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.itheima.stock.pojo.StockMarketIndexInfo"
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.it.stock.pojo.StockMarketIndexInfo"
             useGeneratedKeys="true">
         insert into stock_market_index_info
         ( id, market_code, cur_time
@@ -83,7 +83,7 @@
                , #{tradeAmount,jdbcType=BIGINT}, #{tradeVolume,jdbcType=DECIMAL})
     </insert>
     <insert id="insertSelective" keyColumn="id" keyProperty="id"
-            parameterType="com.itheima.stock.pojo.StockMarketIndexInfo" useGeneratedKeys="true">
+            parameterType="com.it.stock.pojo.StockMarketIndexInfo" useGeneratedKeys="true">
         insert into stock_market_index_info
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">id,</if>
@@ -126,7 +126,7 @@
             , #{smi.tradeAmount,jdbcType=BIGINT}, #{smi.tradeVolume,jdbcType=DECIMAL})
         </foreach>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.itheima.stock.pojo.StockMarketIndexInfo">
+    <update id="updateByPrimaryKeySelective" parameterType="com.it.stock.pojo.StockMarketIndexInfo">
         update stock_market_index_info
         <set>
             <if test="marketCode != null">
@@ -162,7 +162,7 @@
         </set>
         where id = #{id,jdbcType=VARCHAR}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.itheima.stock.pojo.StockMarketIndexInfo">
+    <update id="updateByPrimaryKey" parameterType="com.it.stock.pojo.StockMarketIndexInfo">
         update stock_market_index_info
         set market_code     = #{marketCode,jdbcType=CHAR},
             cur_time        = #{curTime,jdbcType=TIMESTAMP},
